@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamgram/constants/constants.dart';
 import 'package:salamgram/model/models.dart';
 import 'package:salamgram/screens/pillar_detail_screen.dart';
@@ -23,6 +24,7 @@ class PillarList extends StatelessWidget {
                 builder: (context) => PillarDetails(
                   pillarHeaders: pillarListItem.headers,
                   imageUrl: pillarListItem.imageUrl,
+                  title: pillarListItem.name,
                 ),
               ),
             ),
@@ -43,7 +45,7 @@ class PillarList extends StatelessWidget {
                         color: primaryColor,
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.white, width: 3)),
-                    child: Image.asset(pillarListItem.imageUrl),
+                    child: SvgPicture.asset(pillarListItem.imageUrl),
                   ),
                   const SizedBox(
                     width: 20,

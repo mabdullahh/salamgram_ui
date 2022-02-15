@@ -3,17 +3,19 @@ import 'package:salamgram/constants/constants.dart';
 import 'package:salamgram/data/data.dart';
 import 'package:salamgram/widgets/widgets.dart';
 
-class Pillars extends StatelessWidget {
-  const Pillars({Key? key}) : super(key: key);
+class PillarScreen extends StatelessWidget {
+  const PillarScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: const Icon(Icons.arrow_back_ios_rounded),onPressed: ()=>Navigator.pop(context),),
         title: const Text('5 Pillars of Islam'),
         centerTitle: true,
         elevation: 0,
         backgroundColor: primaryColor,
+
       ),
       body: Container(
         height: double.infinity,
