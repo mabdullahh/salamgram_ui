@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:salamgram/constants/constants.dart';
-import 'package:salamgram/screens/pray_screen.dart';
-import 'package:salamgram/screens/salam_screen.dart';
+import 'package:salamgram/providers/bottom_navigation_bar_provider.dart';
+import 'package:salamgram/screens/NavBar/pray_screen.dart';
+import 'package:salamgram/screens/NavBar/salam_screen.dart';
 
-import '../assets.dart';
+import '../../assets.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({Key? key}) : super(key: key);
@@ -26,18 +28,21 @@ class _NavScreenState extends State<NavScreen> {
     'Social': Assets.social,
     'My profile': Assets.profile,
   };
-  int _currentIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
+    final BottomNavigationBarProvider _page =
+        Provider.of<BottomNavigationBarProvider>(context);
+
+
     return Scaffold(
-      body: screens[_currentIndex],
+      body: screens[_page.selectedPage],
       floatingActionButton: Image.asset(
         Assets.fab,
-        width: 70,
-        height: 70,
+        width: 50,
+        height: 50,
         fit: BoxFit.cover,
-
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
@@ -53,6 +58,7 @@ class _NavScreenState extends State<NavScreen> {
                     icon,
                     width: 30,
                     height: 30,
+                    color: Colors.grey,
                   ),
                   activeIcon: SvgPicture.asset(
                     icon,
@@ -64,17 +70,15 @@ class _NavScreenState extends State<NavScreen> {
                 )))
             .values
             .toList(),
-        currentIndex: _currentIndex,
+        currentIndex: _page.selectedPage,
         selectedFontSize: 11,
         unselectedItemColor: Colors.grey,
-        selectedItemColor: darkPrimary,
+        selectedItemColor: primaryColor,
         unselectedFontSize: 11,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w700),
-        onTap: (index) => setState(
-          () {
-            _currentIndex = index;
-          },
-        ),
+        onTap: (int updatedPage) {
+          _page.updateSelectedPage(updatedPage);
+        },
       ),
     );
   }

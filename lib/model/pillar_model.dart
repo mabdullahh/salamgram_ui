@@ -1,4 +1,6 @@
-class PillarModel{
+import 'package:flutter/cupertino.dart';
+
+class PillarModel extends ChangeNotifier{
   String name;
   String imageUrl;
   List<String> headers;

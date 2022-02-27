@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:salamgram/assets.dart';
 import 'package:salamgram/constants/constants.dart';
 import 'package:salamgram/data/data.dart';
+import 'package:salamgram/providers/pillar_details_provider.dart';
 import 'package:salamgram/widgets/widgets.dart';
 
 class PillarScreen extends StatelessWidget {

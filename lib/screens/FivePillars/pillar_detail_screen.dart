@@ -1,22 +1,29 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:salamgram/constants/constants.dart';
+import 'package:salamgram/providers/pillar_details_provider.dart';
 import 'package:salamgram/widgets/pillar_details_widget.dart';
 
 class PillarDetails extends StatelessWidget {
-  final List<String> pillarHeaders;
-  final String imageUrl;
-  final String title;
+  // final List<String> pillarHeaders;
+  // final String imageUrl;
+  // final String title;
 
   const PillarDetails(
       {Key? key,
-      required this.pillarHeaders,
-      required this.imageUrl,
-      required this.title})
+      // required this.pillarHeaders,
+      // required this.imageUrl,
+      // required this.title
+  })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -48,29 +55,31 @@ class PillarDetails extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: SvgPicture.asset(
-                    imageUrl,
-                    height: size.height * 0.07,
-                    width: size.width * 0.07,
+            child: Consumer<PillarDetailsProvider>(
+              builder: (context, value, child) => Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: SvgPicture.asset(
+                      value.imageUrl,
+                      height: size.height * 0.07,
+                      width: size.width * 0.07,
+                    ),
                   ),
-                ),
-                Text(
-                  title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      letterSpacing: 1),
-                ),
-                Expanded(
-                  child: PillarDetailsWidget(
-                    headers: pillarHeaders,
+                  Text(
+                    value.title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        letterSpacing: 1),
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: PillarDetailsWidget(
+                      headers: value.headers,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

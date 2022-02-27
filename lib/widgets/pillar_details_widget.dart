@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:salamgram/constants/constants.dart';
-import 'package:salamgram/screens/pillar_header_detail_screen.dart';
+import 'package:salamgram/screens/FivePillars/pillar_header_detail_screen.dart';
 
 class PillarDetailsWidget extends StatelessWidget {
 

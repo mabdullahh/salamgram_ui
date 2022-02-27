@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salamgram/assets.dart';
 import 'package:salamgram/constants/constants.dart';
-import 'package:salamgram/screens/pillar_screen.dart';
+import 'package:salamgram/screens/FivePillars/pillar_screen.dart';
+import 'package:salamgram/screens/calendar_screen.dart';
+
 
 class PrayScreen extends StatelessWidget {
   const PrayScreen({Key? key}) : super(key: key);
@@ -22,7 +24,12 @@ class PrayScreen extends StatelessWidget {
             GridChild(
               path: Assets.qibla,
               text: 'Qibla',
-              ontap: () {},
+              ontap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CalendarScreen()),
+                );
+              },
             ),
             GridChild(
               path: Assets.tasbeeh,
